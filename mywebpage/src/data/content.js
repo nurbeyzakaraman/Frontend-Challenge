@@ -140,6 +140,13 @@ export const content = {
         { label: 'Linkedin', href: 'https://www.linkedin.com/in/nurbeyzakaraman' },
         { label: 'Email', href: 'mailto:nurbbkaraman@gmail.com' },
       ],
+      cta: {
+        buttonLabel: 'Get in touch',
+        loadingLabel: 'Sending...',
+        requestMessage: 'A visitor sent a contact request from the portfolio CTA.',
+        successMessage: 'Message sent successfully',
+        errorMessage: 'Message could not be sent',
+      },
     },
   },
   tr: {
@@ -272,6 +279,13 @@ export const content = {
         { label: 'Linkedin', href: 'https://www.linkedin.com/in/nurbeyzakaraman' },
         { label: 'Email', href: 'mailto:nurbbkaraman@gmail.com' },
       ],
+      cta: {
+        buttonLabel: 'İletişime geç',
+        loadingLabel: 'Gönderiliyor...',
+        requestMessage: 'Portföy iletişim butonundan bir ziyaretçi isteği gönderildi.',
+        successMessage: 'Mesaj başarıyla gönderildi',
+        errorMessage: 'Mesaj gönderilemedi',
+      },
     },
   },
 }

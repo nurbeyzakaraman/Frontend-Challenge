@@ -1,9 +1,44 @@
+import axios from 'axios'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 import { useAppContext } from '../context/appContext'
 import { content } from '../data/content'
 
 function Contact() {
-  const { language } = useAppContext()
+  const { language, theme } = useAppContext()
   const { contact } = content[language]
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleContactRequest = async () => {
+    if (isSubmitting) return
+
+    setIsSubmitting(true)
+
+    try {
+      await axios.post(
+        'https://jsonplaceholder.typicode.com/posts',
+        {
+          name: 'Nurbeyza Karaman',
+          email: 'nurbbkaraman@gmail.com',
+          language,
+          theme,
+          requestedAt: new Date().toISOString(),
+          message: contact.cta.requestMessage,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+
+      toast.success(contact.cta.successMessage)
+    } catch {
+      toast.error(contact.cta.errorMessage)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <footer className="contact">
@@ -21,6 +56,10 @@ function Contact() {
               </a>
             ))}
           </div>
+
+          <button className="contact-cta" onClick={handleContactRequest} disabled={isSubmitting}>
+            {isSubmitting ? contact.cta.loadingLabel : contact.cta.buttonLabel}
+          </button>
         </div>
       </div>
     </footer>
